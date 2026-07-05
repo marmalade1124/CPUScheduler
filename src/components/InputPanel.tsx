@@ -8,6 +8,7 @@ import { Play, Plus, Trash2, Shuffle } from 'lucide-react'
 import { AlgorithmType } from '@/types'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { toast } from 'sonner'
+import { AlgorithmInfo } from './AlgorithmInfo'
 
 export function InputPanel() {
   const { processes, algorithm, timeQuantum, setAlgorithm, setTimeQuantum, addProcess, removeProcess, updateProcess, runSimulation } = useSchedulingStore()
@@ -57,7 +58,10 @@ export function InputPanel() {
       <CardContent className="space-y-6 flex-1 overflow-y-auto custom-scrollbar">
         
         <div className="space-y-3">
-          <label className="text-sm font-semibold text-slate-700">Algorithm</label>
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-semibold text-slate-700">Algorithm</label>
+            <AlgorithmInfo />
+          </div>
           <Select value={algorithm} onValueChange={(val) => setAlgorithm(val as AlgorithmType)}>
             <SelectTrigger className="bg-white">
               <SelectValue placeholder="Select Algorithm" />
